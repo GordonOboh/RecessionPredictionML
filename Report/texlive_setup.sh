@@ -31,4 +31,6 @@ rm -rf install-tl-* install-tl-unx.tar.gz
 
 sudo apt install -y latexmk
 #latexmk -pdf -f preamble.tex
+#python get_req.py main.log used_packages.txt
+
 
