@@ -1,0 +1,30 @@
+\documentclass[stu,12pt,floatsintext,article]{apa7}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+\usepackage{comment}
+\usepackage[american]{babel}
+\usepackage{amsmath}
+\usepackage{csquotes} 
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa} % Gotta make sure we're patriotic up in here. Seriously, though, there can be local variants to how citations are handled, this sets it to the American idiosyncrasies 
+%\addbibresource{bibliography.bib} 
+\usepackage[T1]{fontenc} 
+\usepackage{mathptmx} % This is the Times New Roman font.
+
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\newcommand{\comma}{,}
+\usepackage[final]{pdfpages}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{setspace}
+%\usepackage[margin=0.1in]{geometry}
+%\usepackage{luacolor} % Required to use the lua-ul \highLight command 
+%\usepackage{lua-ul}
+%\baselineskip=28pt
+%between 27-29 is the closest to windows spacing
+\usepackage{hyperref}
+\usepackage{url}

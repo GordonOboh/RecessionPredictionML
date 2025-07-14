@@ -5,6 +5,7 @@ __pycache__/
 
 # Api keys
 *.env
+*.csv
 
 # C extensions
 *.so
