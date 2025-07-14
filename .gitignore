@@ -6,6 +6,8 @@ __pycache__/
 # Api keys
 *.env
 *.csv
+/Report/install-tl-*
+
 
 # C extensions
 *.so
