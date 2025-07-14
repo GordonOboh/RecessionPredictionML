@@ -7,6 +7,15 @@ __pycache__/
 *.env
 *.csv
 /Report/install-tl-*
+*.pdf
+*.txt
+*.synctex.gz
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.code-workspace
 
 
 # C extensions

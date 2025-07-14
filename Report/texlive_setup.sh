@@ -28,3 +28,6 @@ pdflatex --version
 # Clean up
 cd ..
 rm -rf install-tl-* install-tl-unx.tar.gz
+
+sudo apt install -y latexmk
+
