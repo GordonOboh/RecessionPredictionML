@@ -8,7 +8,10 @@ __pycache__/
 *.csv
 /Report/install-tl-*
 *.pdf
-*.txt
+*.bbl
+*.bcf
+*.blg
+*.run.xml
 *.synctex.gz
 *.aux
 *.fdb_latexmk
