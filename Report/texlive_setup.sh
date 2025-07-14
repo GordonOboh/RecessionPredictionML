@@ -17,10 +17,10 @@ cd install-tl-*
 sudo perl install-tl --no-interaction --scheme=full
 
 # Set up PATH for current session (so pdflatex works right away)
-export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
 
 # Also append it to ~/.bashrc for future sessions
-echo 'export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH' >> ~/.bashrc
+echo 'export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH' >> ~/.bashrc
 
 # Confirm install
 pdflatex --version
