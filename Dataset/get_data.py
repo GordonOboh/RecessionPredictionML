@@ -10,7 +10,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import file_io
 
 env_path = Path(os.getcwd()) / "api.env"
-print(env_path)
 load_dotenv(dotenv_path=env_path)
 
 
