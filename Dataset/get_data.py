@@ -7,7 +7,7 @@ import os
 import sys
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import file_io
+import Utils.file_io as file_io
 
 env_path = Path(os.getcwd()) / "api.env"
 load_dotenv(dotenv_path=env_path)

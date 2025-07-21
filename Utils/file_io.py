@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+from fredapi import Fred
+import sys
 
 def output_csv(dataframe, file_name, flag = False, report = True):
     if flag:
@@ -50,3 +52,27 @@ def output_png(fig, file_name = None, flag = False, report = True):
         fig.savefig(png_path)
         if report:
             print(f"Plot saved to {png_path}")
+
+
+def get_fred_data(series_codes: dict, output_csv_flag=True, filename='data_raw'):
+    FRED_API_KEY = os.getenv("MY_API_KEY")
+
+    if not FRED_API_KEY:
+        sys.exit("Error: MY_API_KEY not found in environment or .env file.")
+
+    fred = Fred(api_key=FRED_API_KEY)
+
+
+    # Fetch data and store in a dictionary
+    data = {}
+    for code, name1 in series_codes.items():
+        try:
+            data[code] = fred.get_series(code)
+        except Exception as e:
+            print(f"Error fetching {name1}: {e}")
+
+    # Combine all into a single DataFrame
+    df = pd.DataFrame(data)
+
+    #Export to CSV
+    output_csv(dataframe=df, flag = True, file_name = 'data_raw')
