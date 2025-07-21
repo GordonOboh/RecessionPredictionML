@@ -3,7 +3,7 @@ import pandas as pd
 from fredapi import Fred
 import sys
 
-def output_csv(dataframe, file_name, flag = False, report = True):
+def output_csv(dataframe, file_name, flag = False, report = True, include_index = True):
     if flag:
         # Check if folder exists, if not, create it
         if not os.path.exists('Dataset'):
@@ -11,7 +11,7 @@ def output_csv(dataframe, file_name, flag = False, report = True):
 
         # Save DataFrame as CSV inside the folder
         csv_path = os.path.join('Dataset', f'{file_name}.csv')
-        dataframe.to_csv(csv_path, index=False)
+        dataframe.to_csv(csv_path, index=include_index)
         if report:
             print(f"DataFrame saved to {csv_path}")
 
@@ -23,7 +23,7 @@ def input_csv(file_name, report=True):
             print(f"File {csv_path} not found.")
         return None
     
-    df = pd.read_csv(csv_path)
+    df = pd.read_csv(csv_path, index_col = 0, parse_dates=True)
     if report:
         print(f"DataFrame loaded from {csv_path}")
     return df
@@ -49,13 +49,13 @@ def output_png(fig, file_name = None, flag = False, report = True):
         # Save Figure as png inside the folder
         png_path = os.path.join('plot', f'{file_name}.png')
         #png_path = png_path.replace(":", "")
-        fig.savefig(png_path)
+        fig.savefig(png_path, bbox_inches='tight')
         if report:
             print(f"Plot saved to {png_path}")
 
 
-def get_fred_data(series_codes: dict, output_csv_flag=True, filename='data_raw'):
-    FRED_API_KEY = os.getenv("MY_API_KEY")
+def get_fred_data(series_codes: dict, FRED_API_KEY: str, output_csv_flag=True, filename='data_raw'):
+    #FRED_API_KEY = os.getenv("MY_API_KEY")
 
     if not FRED_API_KEY:
         sys.exit("Error: MY_API_KEY not found in environment or .env file.")
@@ -75,4 +75,7 @@ def get_fred_data(series_codes: dict, output_csv_flag=True, filename='data_raw')
     df = pd.DataFrame(data)
 
     #Export to CSV
-    output_csv(dataframe=df, flag = True, file_name = 'data_raw')
+    #if output_csv_flag == True:
+    output_csv(dataframe=df, flag = output_csv_flag, file_name = filename)
+
+    return df

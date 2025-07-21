@@ -6,6 +6,7 @@ __pycache__/
 # Api keys
 *.env
 *.csv
+*.png
 /Report/install-tl-*
 *.pdf
 *.bbl

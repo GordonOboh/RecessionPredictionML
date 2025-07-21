@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 def series_codes_update(dataframe, dict):
     for key in dataframe.keys():
@@ -17,7 +18,7 @@ def vis_missing_data(data, color_space='rocket'):
     plt.show()
 
 
-def line_plot(dataframe, labels, plot_title, hlines = None):
+def line_plot(dataframe, labels, plot_title = '', hlines = None, df_recessions = None):
     fig, ax = plt.subplots(figsize=(20,5))
 
     for col_name, col_data in dataframe.items():
@@ -33,14 +34,17 @@ def line_plot(dataframe, labels, plot_title, hlines = None):
         for y, col in hlines.items():
             plt.axhline(y=y, color='red', linestyle='--', linewidth=1.3)
 
-    if recessions is not None:
-        for start, end, color, label_rec in recessions:
-            ax.axvspan(start, end, color=color, alpha=0.2, label=label_rec)
-
+    if df_recessions is not None:
+        for row in df_recessions.itertuples(index=False):
+            ax.axvspan(pd.to_datetime(row.start),  
+                       pd.to_datetime(row.end), 
+                       color=row.color, alpha=0.2#, 
+                       #label=row.recession_label
+                       )
 
     ax.legend()
     plt.xticks(rotation=45)  # Rotate x-axis labels for readability
-    plt.tight_layout()  # Prevent label clipping
+    #plt.tight_layout()  # Prevent label clipping
     plt.show()
 
     return plt, fig
