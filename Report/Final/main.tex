@@ -1,12 +1,79 @@
+\input{./preamble.tex}
+
+\begin{comment}
+    
+
+\documentclass[stu,12pt,floatsintext]{apa7}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+\usepackage{comment}
+\usepackage[american]{babel}
+\usepackage{amsmath}
+\usepackage{csquotes} 
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa} % Gotta make sure we're patriotic up in here. Seriously, though, there can be local variants to how citations are handled, this sets it to the American idiosyncrasies 
+%\addbibresource{bibliography.bib} 
+\usepackage[T1]{fontenc} 
+%\usepackage{mathptmx} % This is the Times New Roman font.
+\usepackage{newtxtext,newtxmath}
 
 
 
-\newcommand{\myweektitle}{Recession Prediction}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\newcommand{\comma}{,}
+\usepackage[final]{pdfpages}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{setspace}
+%\usepackage[margin=0.1in]{geometry}
+%\usepackage{luacolor} % Required to use the lua-ul \highLight command 
+%\usepackage{lua-ul}
+%\baselineskip=28pt
+%between 27-29 is the closest to windows spacing
+\usepackage{hyperref}
+\usepackage{url}
+\DeclareLanguageMapping{american}{american-apa}
+\end{comment}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{bibliography.bib} 
 
-\newcommand{\myweekcontent}{
+\usepackage{xcolor}
+\usepackage{soul}
+%\usepackage{soulutf8}
+\soulregister{\textcite}{1}
+%\usepackage{everypage}
+\usepackage{array}
+
+\input{./Report}
+
+% Title page stuff _____________________
+\title{\myweektitle} % The big, long version of the title for the title page, Network Topology
+\shorttitle{} % The short title for the header
+\author{Gordon Oboh \& Yu-jiun Chen}
+%\authorsnames{GOO, GOO2, GOO3}
+\duedate{\today}
+% \date{January 17, 2024} The student version doesn't use the \date command, for whatever reason
+\authorsaffiliations{Department of Data Science\comma{} Monroe College\comma{} King Graduate School}
+\course{CS655-151HY{:} Machine Learning}
+\professor{Professor Eugene Adjei Djan} 
+
+%\abstract{Insert abstract text here.}
 
 
-\input{Final/Steps/Literature Review}
-\newpage
-\input{Final/Steps/Methodology}
-}
+\begin{document}
+
+\maketitle
+
+\myweekcontent
+
+%\input{Assignment/week1/week1}
+
+%\input{helpcode}
+
+\printbibliography
+
+
+\end{document}

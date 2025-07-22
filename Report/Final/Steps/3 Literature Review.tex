@@ -1,0 +1,37 @@
+
+
+\section{Literature Review}
+
+\subsection{Relevant Studies}
+
+According to \textcite{NBERRecession}
+A recession is generally defined as a significant decline in economic activity that lasts for an few months. This decline is typically visible in real GDP, real income, employment, industrial production, and wholesale-retail sales.
+
+Translating this qualitative definition into a quantitative forecasting problem has led researchers to examine the predictive content of financial indicators. %But how do we express this mathematically?
+The study by \textcite{bauer2018economic} highlights the predictive power of the term spread (10-year minus 1-year Treasury rates), they assert that inverted yield curves have preceded all U.S. recessions over the past 60 years, with only one false positive. Their empirical analysis confirms that a negative spread reliably signals elevated recession probability, even after accounting for potential structural changes in the interest rate environment.
+Similarly, \textcite{aramonte2019yield} reinforce the historical reliability of the 10-year minus 3-month Treasury yield spread, noting that every U.S. recession since 1973 was preceded by an inversion of this spread. %However, they caution that recent distortions—such as exceptionally low term premia caused by central bank asset purchases—may complicate the interpretation of inverted yield curves.
+Nonetheless, both studies converge on a key point: despite evolving macro-financial conditions, the inversion of the yield curve remains one of the most consistent and early indicators of impending recessions \parencite{bauer2018economic, aramonte2019yield}.
+    
+
+
+\subsection{Gaps in Research}
+
+Despite the extensive body of research linking the yield curve to recession forecasting, several critical gaps remain. First, there is a limited focus on alternative yield spreads; the majority of studies concentrate on the 10-year minus 3-month or 1-year Treasury spread,
+overlooking other combinations such as GS10–DGS2 or GS10–DGS3MO that may offer %earlier or 
+more stable predictive signals.
+Second, the use of high-frequency data such as daily or weekly averages is relatively
+rare, as most prior work relies on monthly or quarterly averages, potentially missing high-frequency dynamics crucial for near real-time forecasting.
+Third, there is an insufficient integration of machine learning with macroeconomic datasets. % interpretation.
+Fourth, many studies neglect the issue of class imbalance inherent in recession data. Recession periods are rare relative to expansions, yet performance metrics are often reported without adjustment for this imbalance, potentially leading to misleading conclusions.
+Finally, there is a lack of comparative evaluation across modeling techniques; few studies evaluate both classical econometric models and modern machine learning approaches within the same empirical framework. This leaves open the question of which approaches are most robust across different data conditions and policy regimes.
+
+
+\subsection{Theoretical Framework}
+This study is grounded in the theoretical relationship between the yield curve and the business cycle. According to the \textit{Expectations Hypothesis} of the term structure of interest rates, long-term interest rates reflect the average of expected future short-term interest rates. When investors anticipate economic slowdowns, they expect future short-term rates to fall. This shift in expectations can cause long-term yields to fall below short-term rates, resulting in an inverted yield curve. \hl{Historically, such inversions have preceded U.S. recessions, making the yield curve a widely recognized leading indicator of economic downturns} \parencite{estrella1998predicting}.
+
+This study aims to use several modeling approaches; Logistic Regression a traditional econometric model. In addition, tree-based ensemble models such as Balanced Random Forest and Easy Ensemble Classifier are employed to account for non-linearities and imbalanced class distributions inherent in recession data. Finally, the study incorporates various architectures of Long Short-Term Memory (LSTM) networks. 
+
+
+
+
+
