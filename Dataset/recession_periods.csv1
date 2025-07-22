@@ -1,0 +1,7 @@
+start,end,color,recession_label
+'1980-01-01','1980-07-31',#6BAED6,'Oil Shock'
+'1981-07-01','1982-11-30',#9E9AC8,'Volcker Shock'
+'1990-07-01','1991-03-31',#BC80BD,'Oil Price Spike'
+'2001-03-01','2001-11-30',#FB8072,'Dot-com Bubble Burst'
+'2007-12-01','2009-06-30',#BEBADA,'Housing Collapse'
+'2020-02-01','2020-04-30',#80B1D3,'COVID-19 Pandemic'
