@@ -1,0 +1,7 @@
+time_freq,model_name,auc_roc
+Daily,LogisticRegression,0.7222
+Daily,EasyEnsembleClassifier,0.6918
+Weekly,LogisticRegression,0.7251
+Weekly,EasyEnsembleClassifier,0.6853
+Monthly,LogisticRegression,0.7263
+Monthly,EasyEnsembleClassifier,0.6675
