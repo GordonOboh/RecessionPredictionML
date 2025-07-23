@@ -30,15 +30,23 @@ These indicators are known for their role in predicting yield curve inversions, 
 ---
 
 ## 🧪 Algorithms Compared
-
+### Classical ML
 - Logistic Regression  
 - Balanced Random Forest  
 - XGBoost  
-- Easy Ensemble Classifier  
+- Easy Ensemble Classifier 
+### Deep ML 
 - Multiple LSTM configurations (deep learning)
 
 ---
 ## 📊 Evaluation Metrics
+ ### Metrics for Classical ML
+- **AUC-PR (Area Under Precision-Recall Curve)** – Measures performance on imbalanced datasets by focusing on positive class precision and recall  
+- **ROC-AUC (Area Under ROC Curve)** – Measures the model's ability to discriminate between classes across all thresholds
+
+
+ ### Metrics for Deep ML
+
 
 - **Accuracy** – Proportion of total correct predictions  
 - **Balanced Accuracy** – Average recall per class, useful for imbalanced datasets  
