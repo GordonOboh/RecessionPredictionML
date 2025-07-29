@@ -20,6 +20,73 @@
 
 All experiments were conducted in an offline, notebook-based environment, with structured preprocessing, feature engineering, model training, and evaluation steps implemented as modular components. %Although no deployed system was constructed, the codebase was designed for reproducibility and extensibility, allowing future integration into production or real-time pipelines if desired.
 
+\subsection{LSTM Model Architecture}
+
+The Long Short-Term Memory (LSTM) models employed in this study are configured with $1...n$ layers, where the number of layers and their respective hidden units are determined by the model name. For example, \texttt{LSTM\_4} denotes a single-layer LSTM with 4 units, while \texttt{LSTM\_4\_2} denotes a two-layer LSTM with 4 units in the first layer and 2 units in the second layer.
+
+Each model terminates with a dense output layer using a sigmoid activation function to map the final hidden state to a binary classification. Dropout regularization with a rate of 0.3 is applied after each LSTM layer to mitigate overfitting. Training is performed using the Adam optimizer and a binary focal loss function (equation (~\ref{eq:binary_focal_loss_function})), parameterized by $\gamma = 2.0$,  $\alpha$(equation (~\ref{eq:alpha})) and class weight calculations (equation (~\ref{eq:class_weight}))  to address class imbalance. 
+Model performance is evaluated using the Area Under the Receiver Operating Characteristic Curve (AUC-ROC)
+
+
+%both the Area Under the Receiver Operating Characteristic Curve (AUC-ROC) and the Area Under the Precision-Recall Curve (AUC-PR).
+
+The following LSTM variants were implemented:
+
+\begin{itemize}
+\item \texttt{LSTM\_4}, \texttt{LSTM\_8}: Single-layer LSTM models with 4 or 8 hidden units.
+\item \texttt{LSTM\_4\_4}, \texttt{LSTM\_8\_4}, \texttt{LSTM\_8\_8}: Two-layer LSTM models with corresponding hidden unit configurations.
+\end{itemize}
+
+
+
+%the value of alpha is computed from the class distribution in the training data as follows:
+
+%$\alpha = \frac{\omega_1}{\omega_0 + \omega_1}$
+
+\vspace{-24pt}
+
+\begin{equation}
+\alpha = \frac{\omega_1}{\omega_0 + \omega_1} %\tag{1}
+\label{eq:alpha}
+\end{equation}
+
+where $\omega_0$ and $\omega_1$ are the class weights for the majority (no recession) and minority (recession) classes, respectively.
+
+\vspace{-24pt}
+
+\begin{equation}
+\omega_c = \frac{n_{samples}}{n_{classes} \cdot n_c}
+\label{eq:class_weight}
+\end{equation}
+
+\noindent
+where:
+\vspace{-9pt}
+\begin{itemize} [itemsep = -6pt]
+    \item $c = $ class 0 or class 1
+    \item $\omega_c = $ weight for class $c$
+    \item $n_{samples} = $ total number of training samples
+    \item $n_{classes} = $ number of distinct classes
+    \item $n_c = $ number of samples in class $c$
+\end{itemize}
+
+\vspace{-24pt}
+
+\begin{equation}
+L_{\text{focal}}(p_t) = -\alpha_t (1 - p_t)^\gamma \log(p_t)
+\label{eq:binary_focal_loss_function}
+\end{equation}
+
+where $p_t$ is the predicted probability of the true class.
+
+
+%and their respective hidden units are based on the model name (i.e LSTM\_4 means a LSTM with one layer that has 4 units and LSTM\_4\_2 mwans a LSTM with two layers that has 4 units in the first layer and 2 units in the second layer)
+
+%Each model ends with a dense output layer that maps the final hidden state to a binary classification (sigmoid function). Dropout regularization with a rate of 0.3 is applied after each LSTM layer to mitigate overfitting. Training is performed using the Adam optimizer and a binary focal loss function parameterized by $\gamma = 2.0$ and $\alpha$ to address class imbalance
+
+
+%LSTM\_models.extend(['LSTM\_4', 'LSTM\_8', 'LSTM\_4\_4', 'LSTM\_8\_4', 'LSTM\_8\_8'])
+
 \subsection{Technologies Used}
 
 \hl{List if relevant or maybe place math formulas here}
@@ -34,3 +101,6 @@ Key libraries used include:
     \item \textbf{TensorFlow} and \textbf{Keras} for building, training, and tuning Long Short-Term Memory (LSTM) networks.
 \end{itemize}
 \end{comment}
+
+
+diagram of LSTM and dive in on the explanation 

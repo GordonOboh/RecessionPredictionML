@@ -1,13 +1,13 @@
 
 \section{Discussion}
 
-%\begin{comment}
+\begin{comment}
 \begin{itemize}
     \item Implications: Discuss the broader implications of your findings for the field.
     \item Comparison with Existing Work: Compare your results to the literature or previous studies you reviewed.
     \item Limitations: Acknowledge any limitations in your study (e.g., sample size, methodology constraints).
 \end{itemize}
-%\end{comment}
+\end{comment}
 
 
 
@@ -19,13 +19,19 @@
 
 \subsection{Implications}
 
+The findings of this study offer valuable insights into the application of machine learning techniques for recession forecasting using yield curve data. The consistent performance of Logistic Regression and the Easy Ensemble Classifier across all time frequencies demonstrates that simple, interpretable models can effectively extract recession signals from macro-financial time series when paired with thoughtful preprocessing and class-balancing strategies. Furthermore, the ability of LSTM models %—particularly shallow configurations such as \LSTMF—
+to produce early warning signals highlights the potential of deep learning architectures to model sequential dependencies in economic indicators. These results support the growing role of data-driven models in economic forecasting and suggest that with proper tuning, both traditional and neural approaches can complement one another in real-time monitoring systems.
 
 
 \subsection{Comparison with Existing Work}
 
+\hl{Our findings align with long-established literature indicating that the yield curve, particularly the spread between the 10-year Treasury bond and the 3-month bill, contains strong predictive power for future U.S. recessions. The foundational work by Estrella and Mishkin (1997), and its ongoing application by the New York Federal Reserve (e.g., in the "Probability of US Recession Predicted by Treasury Spread" dataset), confirms that a negative term spread reliably precedes economic downturns by 6 to 24 months. Similarly, the Federal Reserve Bank of San Francisco has emphasized that a negative term spread is one of the most robust leading indicators across decades of data (Bauer \& Mertens, 2018).}
 
+Our use of Logistic Regression is in direct continuity with this empirical tradition, and its top performance in our study affirms that even under modern machine learning workflows, the logistic model remains well-suited to macroeconomic binary classification tasks. However, our work extends prior literature by incorporating LSTM-based time-series models and comparing them to ensemble classifiers under class imbalance constraints. Unlike the static probit/logit approaches used in classical studies, our sequential models attempt to forecast dynamic risk trajectories. While LSTM models showed potential (in probability curve and temporal alignment)
+their performance did not surpass simpler models on AUC-based metrics, possibly due to data sparsity or overfitting. This comparison reveals that while ML architectures provide modeling flexibility, their advantage is not guaranteed without rigorous regularization and domain-specific adaptation.
 
 
 \subsection{Limitations}
 
-
+Several limitations constrain the generalizability and operationalization of this study’s results. First, the dataset is inherently imbalanced, with recession periods representing only a small fraction of the total observations. Although class-balancing techniques such as SMOTE, undersampling, and custom weighting schemes were applied, rare event modeling remains fundamentally difficult and can impact sensitivity. Second, while AUC‐ROC was used as the primary model selection criterion, it may not fully reflect the forecasting utility of LSTM models. AUC evaluates rank-order classification performance but ignores the temporal structure and trajectory of predicted probabilities%—key elements in economic forecasting
+. Future work could incorporate metrics such as Precision-Recall AUC (PR-AUC), calibration plots, or time-based scoring mechanisms to better capture sequence quality. Finally, the study explored a limited set of LSTM configurations. A more exhaustive hyperparameter search; including deeper architectures, attention mechanisms, and bidirectional models could provide better insight into the upper bounds of deep learning performance in this domain.

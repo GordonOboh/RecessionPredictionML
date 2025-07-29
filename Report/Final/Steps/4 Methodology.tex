@@ -35,7 +35,8 @@ Key libraries used include:
 Initial preprocessing of the time-series data involved using forward-fill to handle missing values. This technique was chosen to maintain temporal continuity without introducing artificial volatility or structural breaks.
 Subsequently, two features were engineered from the processed data: the 10-year minus 2-year Treasury spread (GS10--DGS2) and the 10-year minus 3-month Treasury spread (GS10--DGS3MO). 
 A binary target variable was constructed based on the NBER-designated recession dates, labeling each daily observation as either within (1) or outside (0) a recession period. 
-The resulting feature engineered dataset spans \hl{01-Jan-1982} to \hl{17-Jul-2025} and includes both recession and non-recession periods, facilitating robust training and evaluation of predictive models under realistic, imbalanced class distributions. \\
+Following the creation of these three features, the dataset was further resampled into three distinct time frequencies: daily, weekly, and monthly. This would allow for the evaluation of model performance under varying levels of temporal aggregation and data granularity.  
+The final feature engineered dataset spans \hl{01-Jan-1982} to \hl{17-Jul-2025} and includes both recession and non-recession periods, facilitating robust training and evaluation of predictive models under realistic, imbalanced class distributions. \\
 
 %\vspace{-9pt}
 
@@ -47,7 +48,7 @@ The resulting feature engineered dataset spans \hl{01-Jan-1982} to \hl{17-Jul-20
         height=\textheight,%-24pt, 
         keepaspectratio
         ]
-        {Steps/Plots/10Y-2Y and 10Y-3MO Treasury Yield over time.png}
+        {./Assignment/Final/Steps/Plots/10Y-2Y and 10Y-3MO Treasury Yield over time.png}
     \caption{10Y-2Y and 10Y-3MO U.S. Treasury Yield Spreads Over Time. %Inversions (when the spread falls below zero) are often viewed as potential indicators of upcoming economic recessions.
     }
     \label{fig:yield-spreads}
