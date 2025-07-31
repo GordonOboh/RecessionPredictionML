@@ -237,3 +237,4 @@ __marimo__/
 !/Report/main*
 !/RecessionPredictionML*
 !/Report/Final/Steps/Plots**
+!/api.env
