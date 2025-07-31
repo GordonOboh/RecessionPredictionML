@@ -1,14 +1,13 @@
 
 \section{Conclusion}
 
-
-%\begin{comment}
+\begin{comment}
 \begin{itemize}
-    \item Summary of Contributions: Recap the main contributions of your project to the field.
-    \item Future Work: Suggest areas for future research or further development of your project.
-    \item Takeaways: Highlight the key lessons or findings from your work.
+    \item \hlgreen{Summary of Contributions: Recap the main contributions of your project to the field.}
+    \item \hlgreen{Future Work: Suggest areas for future research or further development of your project.}
+    \item \hlgreen{Takeaways: Highlight the key lessons or findings from your work.}
 \end{itemize}
-%\end{comment}
+\end{comment}
 
 
 
@@ -17,17 +16,23 @@
 
 %#################################################################
 
-
+%\hlgreen{}
 \subsection{Summary of Contributions}
+
+The findings of this study offer valuable insights into the application of machine learning techniques for recession forecasting using yield curve data. The consistent performance of Logistic Regression and the Easy Ensemble Classifier across all time frequencies demonstrates that simple, interpretable models can effectively extract recession signals from macro-financial time series when paired with thoughtful preprocessing and class-balancing strategies. Furthermore, the ability of LSTM models to produce early warning signals highlights the potential of deep learning architectures to model sequential dependencies in economic indicators. 
+These results support the growing role of data-driven models in economic forecasting and suggest that with proper tuning, both traditional and neural approaches can complement one another in real-time monitoring systems. Our use of Logistic Regression is in direct continuity with this empirical tradition, and its top performance in our study affirms that even under modern machine learning workflows, the logistic model remains well-suited to macroeconomic binary classification tasks. However, our work extends prior literature by incorporating LSTM-based time-series models and comparing them to ensemble classifiers under class imbalance constraints. Unlike the static probit/logit approaches used in classical studies, our sequential models attempt to forecast dynamic risk trajectories. While LSTM models showed potential (in probability curve and temporal alignment) their performance did not surpass simpler models on \AUCtwo based metrics, possibly due to data sparsity or overfitting. This comparison reveals that while ML architectures provide modeling flexibility, their advantage is not guaranteed without rigorous regularization and domain-specific adaptation.
 
 
 
 \subsection{Future Work}
 
-
+One of the key unexpected outcomes of this study was the underperformance of the LSTM models relative to the baseline Logistic Regression model. Given the LSTMs’ theoretical advantage in capturing temporal dependencies in sequential data, we expected them to match or exceed the performance of traditional classifiers. However, across most time frequencies, Logistic Regression consistently outperformed LSTM variants in terms of \AUCone. This result challenges the assumption that model complexity necessarily yields superior predictive accuracy in economic time series. Additionally, our findings revealed that \AUCone may not be a fully appropriate metric for evaluating LSTM models in this context. While some LSTM configurations produced informative probability trajectories that aligned well with recession timing, their \AUCtwo scores remained relatively low. This discrepancy highlights the limitations of using \AUCone as the sole performance criterion for time-series classification, particularly when sequence shape and trend stability are critical for interpretability and practical use.
 
 
 \subsection{Takeaways}
+
+Several limitations constrain the generalizability and operationalization of this study’s results. First, the dataset is inherently imbalanced, with recession periods representing only a small fraction of the total observations. Although class-balancing techniques such as SMOTE, undersampling, and custom weighting schemes were applied, rare event modeling remains fundamentally difficult and can impact sensitivity. Second, while \AUCone was used as the primary model selection criterion, it may not fully reflect the forecasting utility of LSTM models. \AUCtwo evaluates rank-order classification performance but ignores the temporal structure and trajectory of predicted probabilities. Future work could incorporate metrics such as Precision-Recall \AUCtwo (PR-AUC), calibration plots, or time-based scoring mechanisms to better capture sequence quality. Finally, the study explored a limited set of LSTM configurations. A more exhaustive hyperparameter search; including deeper architectures, attention mechanisms, and bidirectional models could provide better insight into the upper bounds of deep learning performance in this domain.
+
 
 
 

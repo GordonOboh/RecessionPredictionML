@@ -2,36 +2,43 @@
 \section{Introduction}
 
 
-%\begin{comment}
+
+\begin{comment}
 \begin{itemize}
-    \item Context and Background: Briefly explain the area of research and its importance.
-    \item Problem Statement: Clearly define the problem your project addresses.
-    \item Objectives: Outline the goals of the project (what you aimed to achieve).
-    \item Research Questions or Hypothesis: State the key questions or hypotheses that guide your research.
+
+    %\item \hlgreen{Context and Background: Briefly explain the area of research and its importance.}
+    \item \hlgreen{Problem Statement: Clearly define the problem your project addresses.}
+    \item \hlgreen{Objectives: Outline the goals of the project (what you aimed to achieve).}
+    \item \hlgreen{Research Questions or Hypothesis: State the key questions or hypotheses that guide your research.}
 
 \end{itemize}
-%\end{comment}
+\end{comment}
 
 
 
 
 %#################################################################
 
-\begin{comment}
+%\begin{comment}
     
 
 
-\subsection{Summary of Contributions}
+\subsection{Context and Background}
+A recession is generally defined as a significant decline in economic activity that lasts for a few months. This decline is typically visible in real GDP, real income, employment, industrial production, and wholesale-retail sales \parencite{NBERRecession} Translating this qualitative definition into a quantitative forecasting problem has led researchers to examine the predictive content of financial indicators. The study by \textcite{bauer2018economic} highlights the predictive power of the term spread (10-year minus 1-year Treasury rates), asserting that inverted yield curves have preceded all U.S. recessions over the past 60 years, with only one false positive. Their empirical analysis confirms that a negative spread reliably signals elevated recession probability, even after accounting for potential structural changes in the interest rate environment. Similarly, \textcite{aramonte2019yield} reinforce the historical reliability of the 10-year minus 3-month Treasury yield spread, noting that every U.S. recession since 1973 was preceded by an inversion of this spread. Nonetheless, both studies converge on a key point: despite evolving macro-financial conditions, the inversion of the yield curve remains one of the most consistent and early indicators of impending recessions \parencite{aramonte2019yield,bauer2018economic}
+
+\subsection{Problem Statement}
+
+Despite the extensive body of research linking the yield curve to recession forecasting, several critical gaps remain. First, there is a limited focus on alternative yield spreads; the majority of studies concentrate on the 10-year minus 3-month or 1year Treasury spread, overlooking other combinations such as GS10–DGS2 or GS10–DGS3MO that may offer more stable predictive signals. Second, the use of high-frequency data such as daily or weekly averages is relatively rare, as most prior work relies on monthly or quarterly averages, potentially missing high-frequency dynamics crucial for near real-time forecasting. Third, there is an insufficient integration of machine learning with macroeconomic datasets. Fourth, many studies neglect the issue of class imbalance inherent in recession data. Recession periods are rare relative to expansions, yet performance metrics are often reported without adjustment for this imbalance, potentially leading to misleading conclusions. Finally, there is a lack of comparative evaluation across modeling techniques; few studies evaluate both classical econometric models and modern machine learning approaches within the same empirical framework. This leaves open the question of which approaches are most robust across different data conditions and policy regimes
+
+
+\subsection{Objectives}
+
+This study is grounded in the theoretical relationship between the yield curve and the business cycle. According to the Expectations Hypothesis of the term structure of interest rates, long-term interest rates reflect the average of expected future short-term interest rates. When investors anticipate economic slowdowns, they expect future short-term rates to fall. This shift in expectations can cause long-term yields to fall below short-term rates, resulting in an inverted yield curve. 
+Historically, such inversions have preceded U.S. recessions, making the yield curve a widely recognized leading indicator of economic downturns \parencite{estrella1998predicting}. This study aims to use several modeling approaches; Logistic Regression a traditional econometric model. In addition, tree-based ensemble models such as Balanced Random Forest and Easy Ensemble Classifier are employed to account for non-linearities and imbalanced class distributions inherent in recession data. Finally, the study incorporates various architectures of Long Short-Term Memory (LSTM) networks.
 
 
 
-\subsection{Future Work}
 
 
 
-
-\subsection{Takeaways}
-
-
-\end{comment}
 

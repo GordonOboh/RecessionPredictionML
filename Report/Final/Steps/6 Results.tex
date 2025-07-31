@@ -19,6 +19,8 @@
 %#################################################################
 
 
+
+
 \subsection{Key Results}
 
 We present the key empirical findings of our study, beginning with class distribution insights, followed by model performance based on \AUCone (\AUCtwos are calculated on the test set), and finally an analysis of the predicted recession probabilities over time.
@@ -36,7 +38,7 @@ A significant class imbalance is evident across all time frequencies, as shown i
         height=\textheight,%-24pt, 
         keepaspectratio
         ]
-        {./Assignment/Final/Steps/Plots/png_class_imbalance.png}
+        {Steps/Plots/png_class_imbalance.png}
     \caption{Stacked Bar Chart Showing Class Imbalance. 
     }
     \label{fig:class_imbalance}
@@ -98,16 +100,16 @@ Logistic Regression forecasts appear smoother and more gradual, the peaks appear
 \begin{figure}[H]
     \raggedright
     \begin{tabular}{c c}
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png} &
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png} \\ [-9pt]
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Daily Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png} &
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Daily Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png} \\ [-9pt]
         %\textbf{Logistic Regression - Daily} & \textbf{Easy Ensemble - Daily} \\
         %\vspace{-9pt}
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png} &
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png} \\ [-9pt]
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Weekly Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png} &
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Weekly Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png} \\ [-9pt]
         %\textbf{Logistic Regression - Weekly} & \textbf{Easy Ensemble - Weekly} \\
         %\vspace{-9pt}
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png} &
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png} \\
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Monthly Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png} &
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Monthly Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png} \\
         %\textbf{Logistic Regression - Monthly} & \textbf{Easy Ensemble - Monthly} \\
     \end{tabular}
     \caption{Predicted probability of recession %across time frequencies 
@@ -127,16 +129,16 @@ Single-layer LSTMs showed varying degrees of effectiveness across time resolutio
 \begin{figure}[H]
     \raggedright
     \begin{tabular}{c c}
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_4.png} &
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8.png} \\ [-9pt]
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_4.png} &
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8.png} \\ [-9pt]
         %\textbf{Logistic Regression - Daily} & \textbf{Easy Ensemble - Daily} \\
         %\vspace{-9pt}
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_4.png} &
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_8.png} \\ [-9pt]
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_4.png} &
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_8.png} \\ [-9pt]
         %\textbf{Logistic Regression - Weekly} & \textbf{Easy Ensemble - Weekly} \\
         %\vspace{-9pt}
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_4.png} &
-        \includegraphics[width=0.48\textwidth]{./Assignment/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_8.png} \\
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_4.png} &
+        \includegraphics[width=0.48\textwidth]{Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_8.png} \\
         %\textbf{Logistic Regression - Monthly} & \textbf{Easy Ensemble - Monthly} \\
     \end{tabular}
     \caption{Predicted probability of recession %across time frequencies 
@@ -159,19 +161,19 @@ While the predicted probability plots indicate that models performed best on the
 \begin{figure}[H]
     \raggedright
     \begin{tabular}{c c c}
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_4_4.png} &
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8_4.png} &
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8_8.png} \\ [-9pt]
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_4_4.png} &
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8_4.png} &
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8_8.png} \\ [-9pt]
         %\textbf{Logistic Regression - Daily} & \textbf{Easy Ensemble - Daily} \\
         %\vspace{-9pt}
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_4_4.png} &
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_8_4.png} &
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_8_8.png} \\ [-9pt]
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_4_4.png} &
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_8_4.png} &
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_8_8.png} \\ [-9pt]
         %\textbf{Logistic Regression - Weekly} & \textbf{Easy Ensemble - Weekly} \\
         %\vspace{-9pt}
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_4_4.png} &
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_8_4.png} &
-        \includegraphics[width=0.31\textwidth]{./Assignment/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_8_8.png} \\ [-9pt]
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_4_4.png} &
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_8_4.png} &
+        \includegraphics[width=0.31\textwidth]{Steps/Plots/Monthly Predicted Probability of Recession Over Time using LSTM_8_8.png} \\ [-9pt]
         %\textbf{Logistic Regression - Monthly} & \textbf{Easy Ensemble - Monthly} \\
     \end{tabular}
     \caption{Predicted probability of recession %across time frequencies 
@@ -179,7 +181,7 @@ While the predicted probability plots indicate that models performed best on the
     \label{fig:table_lstm44_lstm84_lstm88}
 \end{figure}
 
-
+\vspace{-21pt}
 
 \subsection{Data Interpretation}
 
@@ -195,20 +197,23 @@ This heightened sensitivity may offer advantages in rapidly evolving macroeconom
 \subsubsection{LSTM Model Behavior and Interpretability.}
 The performance of LSTM models revealed both potential and pitfalls when applying deep learning to recession forecasting. 
 Single-layer LSTMs such as \LSTMF and \LSTME showed reasonable performance. 
-With \LSTME achieving the highest AUC among all models at the weekly level. These models were able to capture early signs of recessions with some degree of lead time, validating their ability to model temporal dependencies in sequential economic data. However, they also displayed varying levels of volatility 
+With \LSTME achieving the highest \AUCtwo among all models at the weekly level. These models were able to capture early signs of recessions with some degree of lead time, validating their ability to model temporal dependencies in sequential economic data. However, they also displayed varying levels of volatility 
 suggesting possible sensitivity to noise or overfitting.
 Double-layer LSTM models exhibited increased complexity, with \LSTMFF and \LSTMEE striking a favourable balance between signal detection and noise detection across all time frequencies. Although they all perfomred terribly on the weekly dataset (unstable and exaggerated signals, including elevated probabilities during expansionary periods). 
 
+\begin{comment}
+    
 
-These results reflect a trade-off between model expressiveness and interpretability: while LSTMs are capable of learning complex temporal structures, they require careful regularization and architecture tuning to avoid generating misleading outputs. Notably, the predicted probability plots sometimes diverged from AUC-based evaluations (particularly at monthly frequency) where smoother LSTM outputs may appear more useful for real-time monitoring despite lower AUC values. This underscores a key limitation of AUC as a standalone evaluation metric in time-series classification, as it fails to capture the temporal shape and continuity of prediction trajectories, which are critical in practical forecasting contexts. 
-LSTMs demonstrate strong potential in recession forecasting, especially when thoughtfully designed and appropriately trained. Their probabilistic outputs, though less interpretable than those of traditional models, offer valuable flexibility in capturing early warning signals.
-
+\hldefault{These results reflect a trade-off between model expressiveness and interpretability: while LSTMs are capable of learning complex temporal structures, they require careful regularization and architecture tuning to avoid generating misleading outputs. Notably, the predicted probability plots sometimes diverged from AUC-based evaluations (particularly at monthly frequency) where smoother LSTM outputs may appear more useful for real-time monitoring despite lower \AUCtwo values. 
+%This underscores a key limitation of \AUCtwo as a standalone evaluation metric in time-series classification, as it fails to capture the temporal shape and continuity of prediction trajectories, which are critical in practical forecasting contexts. 
+LSTMs could demonstrate strong potential in recession forecasting, especially when thoughtfully designed and appropriately trained. Their probabilistic outputs, though less interpretable than those of traditional models, offer valuable flexibility in capturing early warning signals.}
+\end{comment}
 
 
 
 \subsection{Unexpected Outcomes}
 
-One of the key unexpected outcomes of this study was the underperformance of the LSTM models relative to the baseline Logistic Regression model. Given the LSTMs’ theoretical advantage in capturing temporal dependencies in sequential data, we expected them to match or exceed the performance of traditional classifiers. However, across most time frequencies, Logistic Regression consistently outperformed LSTM variants in terms of AUC‐ROC. This result challenges the assumption that model complexity necessarily yields superior predictive accuracy in economic time series. Additionally, our findings revealed that AUC‐ROC may not be a fully appropriate metric for evaluating LSTM models in this context. While some LSTM configurations produced informative probability trajectories that aligned well with recession timing, their AUC scores remained relatively low. This discrepancy highlights the limitations of using AUC‐ROC as the sole performance criterion for time-series classification, particularly when sequence shape and trend stability are critical for interpretability and practical use.
+One of the key unexpected outcomes of this study was the underperformance of the LSTM models relative to the baseline Logistic Regression model. Given the LSTMs’ theoretical advantage in capturing temporal dependencies in sequential data, we expected them to match or exceed the performance of traditional classifiers. However, across most time frequencies, Logistic Regression consistently outperformed LSTM variants in terms of \AUCone. This result challenges the assumption that model complexity necessarily yields superior predictive accuracy in economic time series. Additionally, our findings revealed that \AUCone may not be a fully appropriate metric for evaluating LSTM models in this context. While some LSTM configurations produced informative probability trajectories that aligned well with recession timing, their \AUCtwo scores remained relatively low. This discrepancy highlights the limitations of using \AUCone as the sole performance criterion for time-series classification, particularly when sequence shape and trend stability are critical for interpretability and practical use.
 
 
 

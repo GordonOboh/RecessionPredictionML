@@ -3,9 +3,9 @@
 
 \begin{comment}
 \begin{itemize}
-    \item System Architecture: For technical projects, outline the architecture or structure of your system.
-    \item Development Process: Discuss the steps you took to build, test, and deploy your solution.
-    \item Technologies Used: Mention programming languages, frameworks, or tools employed.
+    \item \hlgreen{System Architecture: For technical projects, outline the architecture or structure of your system.}
+    \item \hlgreen{Development Process: Discuss the steps you took to build, test, and deploy your solution.}
+    \item \hlgreen{Technologies Used: Mention programming languages, frameworks, or tools employed.}
 \end{itemize}
 \end{comment}
 
@@ -15,10 +15,22 @@
 
 %#################################################################
 
+\subsection{System Architecture}
 
-\subsection{Computational Workflow Overview}
+The overarching architecture of this project was systematically structured into four distinct phases: data preparation, model testing and validation, analysis of model results, and the implementation of forecasting methodologies. This sequential framework ensured a logical progression from raw data to actionable insights regarding recession indicators. 
+Initially, the process focused on the meticulous acquisition, cleaning, and transformation of raw datasets, specifically those identified as crucial recession indicators through prior research and literature reviews. Subsequently, a selection of machine learning models, chosen for their theoretical applicability to time-series analysis and predictive analytics, underwent rigorous testing and validation against historical data. The performance metrics derived from these models were then meticulously recorded and analyzed to discern their efficacy and reliability. The final phase involved leveraging the insights from the best-performing models to generate future forecasts for economic recession, providing a forward-looking perspective based on empirical evidence.
 
-All experiments were conducted in an offline, notebook-based environment, with structured preprocessing, feature engineering, model training, and evaluation steps implemented as modular components. %Although no deployed system was constructed, the codebase was designed for reproducibility and extensibility, allowing future integration into production or real-time pipelines if desired.
+
+\subsection{Development Process}
+
+The development process for this study commenced with the critical steps of initial data cleaning and subsequent importation, establishing a robust foundation for the analytical procedures. This foundational stage ensured data quality and consistency, which are paramount for reliable model performance. The second, and most extensive, phase involved a multi-faceted analytical approach. This included monitoring key economic indicators such as the 10-year-minus-2-year Treasury yield spread and the 10-year-minus-3-month Treasury yield spread, with careful consideration given to varying average day intervals to capture different temporal dynamics. The Treasury yield data was systematically split into training, validation, and testing sets to ensure unbiased model evaluation. Furthermore, the process entailed generating detailed comparisons between actual historical data and the curves predicted by linear regression models, providing a visual and statistical assessment of model fit. Finally, various forecasting models were applied, and their respective results were thoroughly analyzed to identify patterns and predictive capabilities.
+To rigorously evaluate the performance of the diverse models employed, a comprehensive set of reference metrics was utilized. These included precision, recall, F1-score, and the Area Under the Receiver Operating Characteristic curve (\AUCone score). Each of these metrics provided a distinct perspective on model effectiveness, particularly in identifying and predicting recessionary periods. Precision assessed the accuracy of positive predictions, recall measured the model's ability to identify all actual positive cases, the F1-score offered a balanced measure of both, and the \AUCone score provided an aggregate measure of performance across all possible classification thresholds. Ultimately, the model demonstrating the most superior performance across these critical evaluation metrics was selected and implemented for forecasting future recessionary periods within this project, serving as the primary predictive tool.
+
+
+\subsection{Technologies Used}
+
+All experimental procedures and analytical tasks within this project were conducted in an offline, notebook-based environment, chosen for its flexibility, reproducibility, and iterative development capabilities. The entire workflow, encompassing structured preprocessing, meticulous feature engineering, comprehensive model training, and rigorous evaluation steps, was implemented as modular components. The core programming language utilized for all computational tasks was Python, leveraging its extensive libraries for data manipulation, statistical analysis, and machine learning. Jupyter Notebook served as the primary interactive development environment, facilitating code execution, visualization, and documentation in an integrated format. For version control and collaborative development, GitHub was employed, ensuring efficient tracking of changes and seamless teamwork. Finally, the MS Office Suite was instrumental for generating comprehensive reports, creating professional presentations, and managing project documentation, thereby supporting the communication and dissemination of the project's findings.
+
 
 \subsection{LSTM Model Architecture}
 
@@ -26,7 +38,7 @@ The Long Short-Term Memory (LSTM) models employed in this study are configured w
 
 Each model terminates with a dense output layer using a sigmoid activation function to map the final hidden state to a binary classification. Dropout regularization with a rate of 0.3 is applied after each LSTM layer to mitigate overfitting. Training is performed using the Adam optimizer and a binary focal loss function (equation (~\ref{eq:binary_focal_loss_function})), parameterized by $\gamma = 2.0$,  $\alpha$(equation (~\ref{eq:alpha})) and class weight calculations (equation (~\ref{eq:class_weight}))  to address class imbalance. 
 Model performance is evaluated using the Area Under the Receiver Operating Characteristic Curve (AUC-ROC)
-
+%}
 
 %both the Area Under the Receiver Operating Characteristic Curve (AUC-ROC) and the Area Under the Precision-Recall Curve (AUC-PR).
 
@@ -37,13 +49,8 @@ The following LSTM variants were implemented:
 \item \texttt{LSTM\_4\_4}, \texttt{LSTM\_8\_4}, \texttt{LSTM\_8\_8}: Two-layer LSTM models with corresponding hidden unit configurations.
 \end{itemize}
 
+\begin{comment}
 
-
-%the value of alpha is computed from the class distribution in the training data as follows:
-
-%$\alpha = \frac{\omega_1}{\omega_0 + \omega_1}$
-
-\vspace{-24pt}
 
 \begin{equation}
 \alpha = \frac{\omega_1}{\omega_0 + \omega_1} %\tag{1}
@@ -51,8 +58,6 @@ The following LSTM variants were implemented:
 \end{equation}
 
 where $\omega_0$ and $\omega_1$ are the class weights for the majority (no recession) and minority (recession) classes, respectively.
-
-\vspace{-24pt}
 
 \begin{equation}
 \omega_c = \frac{n_{samples}}{n_{classes} \cdot n_c}
@@ -70,7 +75,6 @@ where:
     \item $n_c = $ number of samples in class $c$
 \end{itemize}
 
-\vspace{-24pt}
 
 \begin{equation}
 L_{\text{focal}}(p_t) = -\alpha_t (1 - p_t)^\gamma \log(p_t)
@@ -79,28 +83,5 @@ L_{\text{focal}}(p_t) = -\alpha_t (1 - p_t)^\gamma \log(p_t)
 
 where $p_t$ is the predicted probability of the true class.
 
-
-%and their respective hidden units are based on the model name (i.e LSTM\_4 means a LSTM with one layer that has 4 units and LSTM\_4\_2 mwans a LSTM with two layers that has 4 units in the first layer and 2 units in the second layer)
-
-%Each model ends with a dense output layer that maps the final hidden state to a binary classification (sigmoid function). Dropout regularization with a rate of 0.3 is applied after each LSTM layer to mitigate overfitting. Training is performed using the Adam optimizer and a binary focal loss function parameterized by $\gamma = 2.0$ and $\alpha$ to address class imbalance
-
-
-%LSTM\_models.extend(['LSTM\_4', 'LSTM\_8', 'LSTM\_4\_4', 'LSTM\_8\_4', 'LSTM\_8\_8'])
-
-\subsection{Technologies Used}
-
-\hl{List if relevant or maybe place math formulas here}
-
-\begin{comment}
-Key libraries used include:
-\begin{itemize}
-    \item \textbf{pandas} and \textbf{NumPy} for data manipulation and numerical computations;
-    \item \textbf{scikit-learn} for classical machine learning models (e.g., Logistic Regression, Random Forest) and preprocessing utilities (e.g., SMOTE, train-test split);
-    \item \textbf{xgboost} for gradient boosting classifiers;
-    \item \textbf{imbalanced-learn} for handling class imbalance using ensemble methods and synthetic oversampling;
-    \item \textbf{TensorFlow} and \textbf{Keras} for building, training, and tuning Long Short-Term Memory (LSTM) networks.
-\end{itemize}
 \end{comment}
 
-
-diagram of LSTM and dive in on the explanation 
