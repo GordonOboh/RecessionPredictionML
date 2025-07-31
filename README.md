@@ -13,9 +13,9 @@ Economic recessions have a wide-ranging impact on markets, businesses, and indiv
 
 ## 📉 Economic Indicators Used
 
-- **GS10** – 10-Year Treasury Constant Maturity Rate  
-- **DGS2** – 2-Year Treasury Constant Maturity Rate  
-- **DGS3MO** – 3-Month Treasury Bill Rate  
+- [**GS10** – 10-Year Treasury Constant Maturity Rate](https://fred.stlouisfed.org/series/GS10)
+- [**DGS2** – 2-Year Treasury Constant Maturity Rate](https://fred.stlouisfed.org/series/DGS2)
+- [**DGS3MO** – 3-Month Treasury Bill Rate](https://fred.stlouisfed.org/series/DGS3MO)
 
 These indicators are known for their role in predicting yield curve inversions, which often precede recessions.
 
@@ -23,9 +23,9 @@ These indicators are known for their role in predicting yield curve inversions, 
 
 ## 🔧 Problem Type
 
-- **Task:** Binary Classification  
+- **Task:** Probability Plots <!-- Binary Classification -->
 - **Target Variable:** Recession (1 = Recession, 0 = No Recession)  
-- **Source:** NBER-labeled recession periods & FRED economic data  
+- [**Source:** NBER-labeled recession periods & FRED economic data](https://fred.stlouisfed.org/series/USREC)
 
 ---
 
@@ -37,14 +37,21 @@ These indicators are known for their role in predicting yield curve inversions, 
 - Easy Ensemble Classifier 
 ### Deep ML 
 - Multiple LSTM configurations (deep learning)
+    - LSTM_4; 1 layer 4 units
+    - LSTM_8; 1 layer 8 units
+    - LSTM_4_4; 2 layers 4 units, 4 units respectively
+    - LSTM_8_4; 2 layers 8 units, 4 units respectively
+    - LSTM_8_8; 2 layers 8 units, 8 units respectively
+
 
 ---
 ## 📊 Evaluation Metrics
  ### Metrics for Classical ML
-- **AUC-PR (Area Under Precision-Recall Curve)** – Measures performance on imbalanced datasets by focusing on positive class precision and recall  
+ <!--
+- **AUC-PR (Area Under Precision-Recall Curve)** – Measures performance on imbalanced datasets by focusing on positive class precision and recall  -->
 - **ROC-AUC (Area Under ROC Curve)** – Measures the model's ability to discriminate between classes across all thresholds
 
-
+<!--
  ### Metrics for Deep ML
 
 
@@ -57,7 +64,7 @@ These indicators are known for their role in predicting yield curve inversions, 
 - **AUC-PR (Area Under Precision-Recall Curve)** – Measures performance on imbalanced datasets by focusing on positive class precision and recall  
 - **ROC-AUC (Area Under ROC Curve)** – Measures the model's ability to discriminate between classes across all thresholds
 
-
+-->
 
 ---
 
