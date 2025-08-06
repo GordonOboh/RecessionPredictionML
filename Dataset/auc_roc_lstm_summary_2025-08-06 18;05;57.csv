@@ -1,0 +1,16 @@
+time_freq,model_name,auc_roc_test,auc_roc_train
+Daily,LSTM_4,0.7204,0.6915
+Daily,LSTM_8,0.7117,0.711
+Daily,LSTM_4_4,0.7329,0.7232
+Daily,LSTM_8_4,0.7286,0.7437
+Daily,LSTM_8_8,0.7017,0.7712
+Weekly,LSTM_4,0.7651,0.6837
+Weekly,LSTM_8,0.6576,0.7287
+Weekly,LSTM_4_4,0.7357,0.7682
+Weekly,LSTM_8_4,0.6912,0.7602
+Weekly,LSTM_8_8,0.7328,0.7931
+Monthly,LSTM_4,0.5335,0.6461
+Monthly,LSTM_8,0.3668,0.2242
+Monthly,LSTM_4_4,0.388,0.9691
+Monthly,LSTM_8_4,0.5935,0.2456
+Monthly,LSTM_8_8,0.5476,0.5509

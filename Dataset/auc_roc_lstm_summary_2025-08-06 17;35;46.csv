@@ -1,0 +1,16 @@
+time_freq,model_name,auc_roc
+Daily,LSTM_4,0.7204
+Daily,LSTM_8,0.7117
+Daily,LSTM_4_4,0.7329
+Daily,LSTM_8_4,0.7286
+Daily,LSTM_8_8,0.7017
+Weekly,LSTM_4,0.7651
+Weekly,LSTM_8,0.6576
+Weekly,LSTM_4_4,0.7357
+Weekly,LSTM_8_4,0.6912
+Weekly,LSTM_8_8,0.7328
+Monthly,LSTM_4,0.5335
+Monthly,LSTM_8,0.3668
+Monthly,LSTM_4_4,0.388
+Monthly,LSTM_8_4,0.5935
+Monthly,LSTM_8_8,0.5476
