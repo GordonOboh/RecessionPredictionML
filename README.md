@@ -1,71 +1,188 @@
-# Currently in Progress
-> A machine learning project for predicting economic recessions using macroeconomic indicators: **GS10**, **DGS2**, and **DGS3MO**.
+# Recession Prediction ML
 
-Recession Predictor is a machine learning project built for a Machine Learning course. The primary objective is to compare the performance of different machine learning models in forecasting economic recessions based on key yield curve indicators.
-
----
-
-## 📌 Project Summary
-
-Economic recessions have a wide-ranging impact on markets, businesses, and individuals. Anticipating a recession early can inform better policy and investment decisions. This project explores how yield curve-based macroeconomic indicators can be used to train machine learning models for binary classification — determining whether the economy is in a recession or not.
+> Comparing traditional machine learning and deep learning models for forecasting U.S. economic recessions using yield curve indicators.
 
 ---
 
-## 📉 Economic Indicators Used
+## Overview
 
-- [**GS10** – 10-Year Treasury Constant Maturity Rate](https://fred.stlouisfed.org/series/GS10)
-- [**DGS2** – 2-Year Treasury Constant Maturity Rate](https://fred.stlouisfed.org/series/DGS2)
-- [**DGS3MO** – 3-Month Treasury Bill Rate](https://fred.stlouisfed.org/series/DGS3MO)
-
-These indicators are known for their role in predicting yield curve inversions, which often precede recessions.
+This project was built for a Machine Learning course and investigates whether macroeconomic yield curve data alone can predict economic recessions. It compares four classical ML models against five LSTM architectures across three time frequencies — **daily, weekly, and monthly** — using binary classification (Recession / No Recession).
 
 ---
 
-## 🔧 Problem Type
+## Economic Indicators
 
-- **Task:** Probability Plots <!-- Binary Classification -->
-- **Target Variable:** Recession (1 = Recession, 0 = No Recession)  
-- [**Source:** NBER-labeled recession periods & FRED economic data](https://fred.stlouisfed.org/series/USREC)
+| Indicator | Description | Source |
+|---|---|---|
+| [**GS10**](https://fred.stlouisfed.org/series/GS10) | 10-Year Treasury Constant Maturity Rate | FRED |
+| [**DGS2**](https://fred.stlouisfed.org/series/DGS2) | 2-Year Treasury Constant Maturity Rate | FRED |
+| [**DGS3MO**](https://fred.stlouisfed.org/series/DGS3MO) | 3-Month Treasury Bill Rate | FRED |
+
+Yield curve inversions (short-term rates exceeding long-term rates) are historically strong leading indicators of recessions. Recession labels are sourced from [NBER via FRED](https://fred.stlouisfed.org/series/USREC).
+
+<p align="center">
+  <img src="Report/Final/Steps/Plots/10Y-2Y and 10Y-3MO Treasury Yield over time.png" width="80%" alt="Treasury Yield Spread Over Time"/>
+</p>
 
 ---
 
-## 🧪 Algorithms Compared
+## Class Imbalance
+
+Recession periods represent only ~19% of the dataset across all time frequencies — a significant class imbalance addressed through SMOTE, random undersampling, class weights, and a weighting factor (α).
+
+<p align="center">
+  <img src="Report/Final/Steps/Plots/png_class_imbalance.png" width="60%" alt="Class Imbalance"/>
+</p>
+
+---
+
+## Models
+
 ### Classical ML
-- Logistic Regression  
-- Balanced Random Forest  
-- XGBoost  
-- Easy Ensemble Classifier 
-### Deep ML 
-- Multiple LSTM configurations (deep learning)
-    - LSTM_4; 1 layer 4 units
-    - LSTM_8; 1 layer 8 units
-    - LSTM_4_4; 2 layers 4 units, 4 units respectively
-    - LSTM_8_4; 2 layers 8 units, 4 units respectively
-    - LSTM_8_8; 2 layers 8 units, 8 units respectively
+| Model | Notes |
+|---|---|
+| Logistic Regression | Best overall performer |
+| Easy Ensemble Classifier | Strong, sensitivity-focused |
+| Balanced Random Forest | Failed (AUC-ROC < 0.5) |
+| XGBoost | Failed (AUC-ROC < 0.5) |
 
-
----
-## 📊 Evaluation Metrics
- ### Metrics for Classical ML
- <!--
-- **AUC-PR (Area Under Precision-Recall Curve)** – Measures performance on imbalanced datasets by focusing on positive class precision and recall  -->
-- **ROC-AUC (Area Under ROC Curve)** – Measures the model's ability to discriminate between classes across all thresholds
-
-<!--
- ### Metrics for Deep ML
-
-
-- **Accuracy** – Proportion of total correct predictions  
-- **Balanced Accuracy** – Average recall per class, useful for imbalanced datasets  
-- **Precision** – Proportion of positive identifications that were actually correct  
-- **Recall** – Proportion of actual positives that were correctly identified  
-- **F1 Score** – Harmonic mean of precision and recall, balancing both metrics  
-- **Weighted Average** – Weighted average of precision, recall, and F1 score to account for class imbalance  
-- **AUC-PR (Area Under Precision-Recall Curve)** – Measures performance on imbalanced datasets by focusing on positive class precision and recall  
-- **ROC-AUC (Area Under ROC Curve)** – Measures the model's ability to discriminate between classes across all thresholds
-
--->
+### Deep Learning (LSTM)
+| Model | Architecture |
+|---|---|
+| LSTM_4 | 1 layer, 4 units |
+| LSTM_8 | 1 layer, 8 units |
+| LSTM_4_4 | 2 layers, 4 + 4 units |
+| LSTM_8_4 | 2 layers, 8 + 4 units |
+| LSTM_8_8 | 2 layers, 8 + 8 units |
 
 ---
 
+## Results
 
+**Metric:** AUC-ROC (test set). Models with AUC-ROC < 0.5 (worse than random) were excluded from further analysis for traditional models; all LSTM models were retained for comparison.
+
+| Time Frequency | Model | AUC-ROC |
+|---|---|---|
+| **Daily** | **Logistic Regression** | **0.7222** |
+| | Easy Ensemble Classifier | 0.6918 |
+| | LSTM_4 | 0.7202 |
+| | LSTM_4_4 | 0.7330 |
+| | LSTM_8 | 0.2752 |
+| | LSTM_8_4 | 0.7291 |
+| | LSTM_8_8 | 0.7021 |
+| **Weekly** | **Logistic Regression** | **0.7251** |
+| | Easy Ensemble Classifier | 0.6853 |
+| | LSTM_4 | 0.7178 |
+| | LSTM_4_4 | 0.7263 |
+| | LSTM_8 | **0.7604** ← highest overall |
+| | LSTM_8_4 | 0.4078 |
+| | LSTM_8_8 | 0.6019 |
+| **Monthly** | **Logistic Regression** | **0.7263** |
+| | Easy Ensemble Classifier | 0.6675 |
+| | LSTM_4 | 0.5335 |
+| | LSTM_4_4 | 0.3880 |
+| | LSTM_8 | 0.3730 |
+| | LSTM_8_4 | 0.5952 |
+| | LSTM_8_8 | 0.4559 |
+
+---
+
+## Recession Probability Forecasts
+
+### Logistic Regression & Easy Ensemble
+
+Both models produce elevated probabilities ahead of known recession periods. Logistic Regression gives smoother, more gradual signals; Easy Ensemble produces sharper peaks (~52 weeks before a recession).
+
+<p align="center">
+  <img src="Report/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png" width="48%" alt="LR Daily"/>
+  <img src="Report/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png" width="48%" alt="EE Daily"/>
+</p>
+<p align="center">
+  <img src="Report/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png" width="48%" alt="LR Weekly"/>
+  <img src="Report/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png" width="48%" alt="EE Weekly"/>
+</p>
+<p align="center">
+  <img src="Report/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using LOGISTICREGRESSION model.png" width="48%" alt="LR Monthly"/>
+  <img src="Report/Final/Steps/Plots/Monthly Predicted Probability of Recession Over Time using EASYENSEMBLECLASSIFIER model.png" width="48%" alt="EE Monthly"/>
+</p>
+
+### Single-Layer LSTMs (LSTM_4 & LSTM_8)
+
+<p align="center">
+  <img src="Report/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_4.png" width="48%" alt="LSTM_4 Daily"/>
+  <img src="Report/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8.png" width="48%" alt="LSTM_8 Daily"/>
+</p>
+<p align="center">
+  <img src="Report/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_4.png" width="48%" alt="LSTM_4 Weekly"/>
+  <img src="Report/Final/Steps/Plots/Weekly Predicted Probability of Recession Over Time using LSTM_8.png" width="48%" alt="LSTM_8 Weekly"/>
+</p>
+
+### Double-Layer LSTMs (LSTM_4_4, LSTM_8_4, LSTM_8_8)
+
+<p align="center">
+  <img src="Report/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_4_4.png" width="32%" alt="LSTM_4_4 Daily"/>
+  <img src="Report/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8_4.png" width="32%" alt="LSTM_8_4 Daily"/>
+  <img src="Report/Final/Steps/Plots/Daily Predicted Probability of Recession Over Time using LSTM_8_8.png" width="32%" alt="LSTM_8_8 Daily"/>
+</p>
+
+---
+
+## Key Findings
+
+- **Logistic Regression** was the most consistent performer across all time frequencies, challenging the assumption that complexity yields better results.
+- **LSTM_8** achieved the single highest AUC-ROC (0.7604) on weekly data, but was inconsistent across frequencies.
+- **XGBoost and Balanced Random Forest** failed to exceed the 0.5 AUC-ROC threshold and were excluded from further analysis.
+- **AUC-ROC alone** may be insufficient for evaluating LSTM models — probability trajectory shape and timing matter in real-world recession forecasting.
+
+---
+
+## Tech Stack
+
+| Category | Libraries |
+|---|---|
+| Data | `pandas`, `numpy`, FRED API |
+| Classical ML | `scikit-learn`, `imbalanced-learn`, `xgboost` |
+| Deep Learning | `tensorflow` / `keras` |
+| Visualization | `matplotlib` |
+
+---
+
+## Project Structure
+
+```
+├── Notebooks/
+│   ├── data_prep.ipynb          # Data collection and preprocessing
+│   ├── Trad_Models4.ipynb       # Classical ML models
+│   ├── LSTM_Models1.ipynb       # LSTM models
+│   └── Submission.ipynb         # Final submission notebook
+├── Notebooks/Dataset/           # Processed datasets (daily/weekly/monthly)
+├── Report/
+│   └── Final/
+│       ├── main.pdf             # Full project report
+│       └── Steps/Plots/         # All generated charts
+├── Utils/
+│   ├── functions.py             # Shared model utilities
+│   └── file_io.py               # I/O helpers
+├── Dataset/
+│   └── get_data.py              # FRED data fetching script
+├── requirements1.txt            # Core dependencies
+└── requirements2.txt            # Extended dependencies
+```
+
+---
+
+## Setup
+
+```bash
+pip install -r requirements1.txt
+# or for full dependencies:
+pip install -r requirements2.txt
+```
+
+Run notebooks in order: `data_prep` → `Trad_Models4` / `LSTM_Models1` → `Submission`.
+
+---
+
+## Report
+
+Full methodology, model analysis, and findings: [`Report/Final/main.pdf`](./Report/Final/main.pdf)
