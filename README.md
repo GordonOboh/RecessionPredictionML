@@ -1,5 +1,10 @@
 # Recession Prediction ML
 
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.19-orange?logo=tensorflow&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-f7931e?logo=scikit-learn&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
+
 > Comparing traditional machine learning and deep learning models for forecasting U.S. economic recessions using yield curve indicators.
 
 ---
@@ -20,8 +25,12 @@ This project was built for a Machine Learning course and investigates whether ma
 
 Yield curve inversions (short-term rates exceeding long-term rates) are historically strong leading indicators of recessions. Recession labels are sourced from [NBER via FRED](https://fred.stlouisfed.org/series/USREC).
 
+The raw rates are used to engineer two spread features fed into the models:
+- **10Y–2Y spread**: 10-year minus 2-year yield
+- **10Y–3MO spread**: 10-year minus 3-month yield
+
 <p align="center">
-  <img src="Report/Final/Steps/Plots/10Y-2Y and 10Y-3MO Treasury Yield over time.png" width="80%" alt="Treasury Yield Spread Over Time"/>
+  <img src="Report/Final/Steps/Plots/png_features.png" width="90%" alt="Engineered Yield Spread Features Over Time"/>
 </p>
 
 ---
